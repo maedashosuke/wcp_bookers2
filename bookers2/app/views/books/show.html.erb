@@ -1,5 +1,6 @@
 <div class="book-body">
   <%= attachment_image_tag @book, :profile_image %>
+  <p>投稿ユーザー画像：<%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p>ショップ名：<%= @book.title %></p>
   <p>説明：<%= @book.body %></p>
   <p>ユーザーネーム：<%= @book.user.name %></p>
