@@ -20,3 +20,57 @@
   <div class='row'>
 	  <%= link_to "User info", edit_user_path(@user.id) %>
   </div>
+
+<h2>New book</h2>
+  <%= form_with model: @book_new, local:true do |f| %>
+    <div class="field row">
+      <div class="col-xs-12">
+        <h5>Title</h5>
+          <%= f.text_field :title, size: "35" %>
+      </div>
+    </div>
+
+    <div class="field row">
+      <div class="col-xs-12">
+        <h5>Opinion</h5>
+          <%= f.text_area :body, size: "37" %>
+      </div>
+    </div>
+
+      <br>
+
+    <div class="actions row">
+      <input type="submit" value="Create Book" class="btn btn-primary col-xs-12"  />
+    </div>
+  <% end %>
+
+
+<h3>Book detail</h3>
+
+<table class='table table-hover table-inverse'>
+  <tbody>
+    <tr>
+      <td>
+       <%= link_to(user_path(@book.user)) do %>
+         <% if @book.user == current_user %>
+           <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+         <% else %>
+           <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+         <% end %>
+         <div>
+          <%= @book.user.name %><% end %>
+         </div>
+      </td>
+      <td><%= link_to(book_path(@book)) do %>
+        <%= @book.title %>
+        <% end %>
+      </td>
+　　　<td><%= @book.body %></td>
+
+          <% if @book.user == current_user %>
+            <td><button class="btn btn-success btn-xs"><%= link_to 'Edit',edit_book_path(@book) %></button></td>
+            <td><button class="btn btn-danger btn-xs"><%= link_to 'Destroy', book_path, method: :delete, data: {confirm: "本当に消しますか?" } %></button></td>
+          <% end %>
+　　</tr>
+　</tbody>
+</table>
