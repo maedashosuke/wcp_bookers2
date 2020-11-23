@@ -66,3 +66,36 @@
     <%= paginate @books, class: "paginate" %>
 　</tbody>
 </table>
+
+<main>
+  <p id="notice">
+    <div class="container px-5 px-sm-0">
+      <div class="row">
+        <div class="col-md-3">
+          <h2>User info</h2>
+            <% if @user == current_user %>
+              <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "" %>
+            <% else %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+            <% end %>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>name</th>
+                  <th><%= @user.name %></th>
+                </tr>
+                <tr>
+                  <th>introduction</th>
+                  <th><%= @user.introduction %></th>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/1/edit"></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </p>
+</main>
+
