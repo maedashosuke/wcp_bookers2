@@ -4,6 +4,12 @@
       <div class="row">
         <div class="col-md-3">
 
+          <% if flash[:notice] %>
+            <div class="flash">
+          <%= flash[:notice] %>
+            </div>
+          <% end %>
+
           <h2>User info</h2>
             <% if @user == current_user %>
               <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "" %>
