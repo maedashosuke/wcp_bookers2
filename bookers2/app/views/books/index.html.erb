@@ -1,9 +1,10 @@
+<script src="https://kit.fontawesome.com/1e44c612da.js" crossorigin="anonymous"></script>
 <p id="notice">
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-8 offset-md-1">
 
-        <%= render 'books/side' %>
+        <%= render 'books/side', book: @book, user: current_user %>
 
         <% if @book.errors.any? %>
         <div class="alert alert-warning">
